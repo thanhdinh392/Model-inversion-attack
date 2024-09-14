@@ -1,0 +1,19 @@
+Training FL
+- if iid is True:
+    mnist: python main_FL.py --iid
+    fashion-mnist: python main_FL.py --dataset fashion-mnist --iid 
+- if iid is False:
+    mnist: python main_FL.py 
+    fashion-mnist: python main_FL.py --dataset fashion-mnist 
+Training Central
+    mnist: python main_central.py 
+    fashion-mnist: python main_central.py --dataset fashion-mnist
+Attack Central 
+    mnist: python attack_central.py
+    fashion-mnist: python attack_central.py --dataset fashion-mnist 
+Attack fed client
+    mnist: python attack_fed.py --type_fed client --iid (if iid)
+    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed client --iid (if iid)
+Attack fed global 
+    mnist: python attack_fed.py --type_fed global --iid (if iid)
+    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed global --iid (if iid)
