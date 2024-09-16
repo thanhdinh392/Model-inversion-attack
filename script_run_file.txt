@@ -17,3 +17,5 @@ Attack fed client
 Attack fed global 
     mnist: python attack_fed.py --type_fed global --iid (if iid)
     fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed global --iid (if iid)
+
+Hello
