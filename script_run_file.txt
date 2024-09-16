@@ -2,7 +2,7 @@ Training FL
 - if iid is True:
     mnist: python main_FL.py --iid
     fashion-mnist: python main_FL.py --dataset fashion-mnist --iid 
-- if iid is False:
+- if iid is False: (non-iid)
     mnist: python main_FL.py 
     fashion-mnist: python main_FL.py --dataset fashion-mnist 
 Training Central
@@ -12,10 +12,35 @@ Attack Central
     mnist: python attack_central.py
     fashion-mnist: python attack_central.py --dataset fashion-mnist 
 Attack fed client
-    mnist: python attack_fed.py --type_fed client --iid (if iid)
-    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed client --iid (if iid)
+    mnist: python attack_fed.py --type_fed client --iid (if iid) (if non-iid remove "--iid")
+    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed client --iid (if iid) (if non-iid remove "--iid")
 Attack fed global 
-    mnist: python attack_fed.py --type_fed global --iid (if iid)
-    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed global --iid (if iid)
+    mnist: python attack_fed.py --type_fed global --iid (if iid) (if non-iid remove "--iid")
+    fashion-mnist: python attack_fed.py --dataset fashion-mnist --type_fed global --iid (if iid) (if non-iid remove "--iid")
 
-Hello
+------------------NOISE------------------
+Train FL Noise
+    mnist:
+    python main_FL.py --iid --noise --sigma 0.001 (min)
+    python main_FL.py --iid --noise --sigma 0.01 (max)
+
+    fashion-mnist:
+    python main_FL.py --dataset fashion-mnist --iid --sigma 0.001 (min)
+    python main_FL.py --dataset fashion-mnist --iid --sigma 0.01 (max)
+
+Attack fed noise
+    mnist:
+        client:
+        python attack_fed.py --type_fed client --iid --sigma 0.001 (min)
+        python attack_fed.py --type_fed client --iid --sigma 0.01  (max)
+        global:
+        python attack_fed.py --type_fed global --iid --sigma 0.001 (min)
+        python attack_fed.py --type_fed global --iid --sigma 0.01 (max)
+    fashion-mnist:
+        client:
+        python attack_fed.py --dataset fashion-mnist --type_fed client --iid --sigma 0.001 (min)
+        python attack_fed.py --dataset fashion-mnist --type_fed client --iid --sigma 0.01  (max)
+        global:
+        python attack_fed.py --dataset fashion-mnist --type_fed global --iid --sigma 0.001 (min)
+        python attack_fed.py --dataset fashion-mnist --type_fed global --iid --sigma 0.01 (max)
+
